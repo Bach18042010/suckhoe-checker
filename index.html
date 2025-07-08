@@ -1,0 +1,110 @@
+Ex<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ thống đánh giá triệu chứng sức khỏe</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4faff;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 720px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #007acc;
+    }
+    label {
+      margin-top: 20px;
+      display: block;
+      font-weight: bold;
+    }
+    select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .result {
+      background: #eaf7ff;
+      padding: 15px;
+      border-left: 4px solid #007acc;
+      border-radius: 6px;
+      color: #333;
+      white-space: pre-line;
+    }
+    .disclaimer {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🩺 Hệ thống đánh giá triệu chứng sức khỏe</h1>
+
+    <label for="symptom">Chọn triệu chứng bạn đang gặp:</label>
+    <select id="symptom">
+      <option value="">-- Chọn triệu chứng --</option>
+      <option value="ho">Ho</option>
+      <option value="sot">Sốt</option>
+      <option value="dau_bung">Đau bụng</option>
+      <option value="chong_mat">Chóng mặt</option>
+      <option value="dau_dau">Đau đầu</option>
+      <option value="khong_an">Chán ăn</option>
+    </select>
+
+    <button onclick="analyzeSymptom()">🔍 Phân tích triệu chứng</button>
+
+    <div class="result" id="result"></div>
+    <p class="disclaimer">⚠️ Lưu ý: Đây là hệ thống hỗ trợ sơ bộ, không thay thế chẩn đoán từ bác sĩ.</p>
+  </div>
+
+  <script>
+    function analyzeSymptom() {
+      const symptom = document.getElementById("symptom").value;
+      const resultDiv = document.getElementById("result");
+      let result = "";
+
+      switch (symptom) {
+        case "ho":
+          result = "🔎 Triệu chứng: Ho\nCó thể bạn đang bị viêm họng hoặc cảm lạnh.\n\n👉 Gợi ý: Uống nước ấm, nghỉ ngơi, có thể dùng siro ho hoặc Paracetamol nếu có sốt.";
+          break;
+        case "sot":
+          result = "🔎 Triệu chứng: Sốt\nCó thể là dấu hiệu nhiễm virus hoặc cảm cúm.\n\n👉 Gợi ý: Nghỉ ngơi, theo dõi nhiệt độ, uống nhiều nước. Nếu sốt cao > 38.5°C liên tục, nên đi khám.";
+          break;
+        case "dau_bung":
+          result = "🔎 Triệu chứng: Đau bụng\nCó thể do rối loạn tiêu hóa hoặc ngộ độc thực phẩm.\n\n👉 Gợi ý: Bù nước bằng Oresol, tránh thức ăn dầu mỡ, theo dõi thêm.";
+          break;
+        case "chong_mat":
+          result = "🔎 Triệu chứng: Chóng mặt\nCó thể do huyết áp thấp, mất nước hoặc thiếu máu.\n\n👉 Gợi ý: Nằm nghỉ, uống nước đường hoặc sữa, tránh thay đổi tư thế đột ngột.";
+          break;
+        case "dau_dau":
+          result = "🔎 Triệu chứng: Đau đầu\nCó thể do căng thẳng, thiếu ngủ hoặc cảm lạnh.\n\n👉 Gợi ý: Nghỉ ngơi, hạn chế nhìn màn hình lâu, có thể dùng Paracetamol nếu cần.";
+          break;
+        case "khong_an":
+          result = "🔎 Triệu chứng: Chán ăn\nCó thể liên quan đến rối loạn tiêu hóa, tâm lý hoặc thiếu vitamin.\n\n👉 Gợi ý: Ăn thức ăn nhẹ, uống nước hoa quả, giữ tinh thần thoải mái.";
+          break;
+        default:
+          result = "⚠️ Vui lòng chọn một triệu chứng để hệ thống phân tích.";
+      }
+
+      resultDiv.textContent = result;
+    }
+  </script>
+</body>
+</html>
